@@ -1,0 +1,7 @@
+Running: xsim.dir/OTTER_Wrapper2_behav/xsimk.exe -simmode gui -wdb OTTER_Wrapper2_behav.wdb -simrunnum 0 -socket 60898
+Design successfully loaded
+Design Loading Memory Usage: 29780 KB (Peak: 29780 KB)
+Design Loading CPU Usage: 1468 ms
+Simulation completed
+Simulation Memory Usage: 30628 KB (Peak: 30628 KB)
+Simulation CPU Usage: 1562 ms
