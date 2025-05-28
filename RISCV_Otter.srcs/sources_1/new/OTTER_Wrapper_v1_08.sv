@@ -31,7 +31,6 @@ module OTTER_Wrapper(
     output logic [15:0] leds,
     output logic [7:0] segs,
     output logic [3:0] an    );
-    
          
     //- INPUT PORT IDS ---------------------------------------------------------
     localparam SWITCHES_PORT_ADDR = 32'h11008000;  // 0x1100_8000

@@ -42,7 +42,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .init_design.begin.rst
-EAStep vivado -log OTTER_Wrapper2.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source OTTER_Wrapper2.tcl -notrace
+/bin/touch .write_bitstream.begin.rst
+EAStep vivado -log OTTER_Wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source OTTER_Wrapper.tcl -notrace
 
 

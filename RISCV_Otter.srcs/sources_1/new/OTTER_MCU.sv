@@ -36,7 +36,8 @@ module OTTER_MCU(
     wire pc_reset;
     wire [2:0] pc_sel;
     wire [31:0] pc_mux_out;
-    wire [31:0] plus_4 = pc + 4;
+    wire [31:0] plus_4;
+    assign plus_4 = pc + 4;
     
     //memory
     wire [31:0] ir;
@@ -54,21 +55,32 @@ module OTTER_MCU(
     wire [31:0] rs2;
     
     //immediate generator
-    wire [31:0] u_type = {ir[31:12],12'b0};
-    wire [31:0] i_type = {{21{ir[31]}},ir[30:20]};
-    wire [31:0] s_type = {{21{ir[31]}},ir[30:25],ir[11:7]};
-    wire [31:0] j_type = {{12{ir[31]}},ir[19:12],ir[20],ir[30:21],1'b0};
-    wire [31:0] b_type = {{20{ir[31]}},ir[7],ir[30:25],ir[11:8],1'b0};
+    wire [31:0] u_type;
+    assign u_type = {ir[31:12],12'b0};
+    wire [31:0] i_type;
+    assign i_type = {{21{ir[31]}},ir[30:20]};
+    wire [31:0] s_type;
+    assign s_type = {{21{ir[31]}},ir[30:25],ir[11:7]};
+    wire [31:0] j_type;
+    assign j_type = {{12{ir[31]}},ir[19:12],ir[20],ir[30:21],1'b0};
+    wire [31:0] b_type;
+    assign b_type = {{20{ir[31]}},ir[7],ir[30:25],ir[11:8],1'b0};
     
     //branch addr generator
-    wire [31:0] jal = pc + j_type;
-    wire [31:0] branch = pc + b_type;
-    wire [31:0] jalr = rs1 + i_type;
+    wire [31:0] jal;
+    assign jal = pc + j_type;
+    wire [31:0] branch;
+    assign branch = pc + b_type;
+    wire [31:0] jalr;
+    assign jalr = rs1 + i_type;
     
     //branch cond generator
-    wire br_eq = (rs1 == rs2);
-    wire br_lt = ($signed(rs1) < $signed(rs2));
-    wire br_ltu = (rs1 < rs2);
+    wire br_eq;
+    assign br_eq = (rs1 == rs2);
+    wire br_lt;
+    assign br_lt = ($signed(rs1) < $signed(rs2));
+    wire br_ltu;
+    assign br_ltu = (rs1 < rs2);
     
     //ALU
     wire [3:0] alu_fun;
@@ -76,7 +88,8 @@ module OTTER_MCU(
     wire [2:0] alu_b_sel;
     wire [31:0] alu_a;
     wire [31:0] alu_b;
-    wire [31:0] complement_rs1 = ~rs1;
+    wire [31:0] complement_rs1;
+    assign complement_rs1 = ~rs1;
     wire [31:0] alu_out;
     
     //CSR
@@ -93,7 +106,8 @@ module OTTER_MCU(
     assign iobus_addr = alu_out;
     
     //interrupt
-    wire intr_in = mie & intr;
+    wire intr_in;
+    assign intr_in = mie & intr;
     
     CU_Decoder mcuDecoder (
         .OPCODE     (ir[6:0]),

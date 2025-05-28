@@ -181,7 +181,6 @@ module CU_FSM(
             
             st_INTR:  begin
                 PC_WE = 1'b1;
-                CSR_WE = 1'b1;
                 int_taken = 1'b1;
                 NS = st_FET;
             end

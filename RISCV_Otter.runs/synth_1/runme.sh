@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log OTTER_Wrapper2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source OTTER_Wrapper2.tcl
+EAStep vivado -log OTTER_Wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source OTTER_Wrapper.tcl
