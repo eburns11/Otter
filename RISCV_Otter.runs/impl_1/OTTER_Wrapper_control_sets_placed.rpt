@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date         : Wed May 28 16:56:06 2025
+| Date         : Fri May 30 00:29:15 2025
 | Host         : DESKTOP-P2N9ID2 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file OTTER_Wrapper_control_sets_placed.rpt
 | Design       : OTTER_Wrapper
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    13 |
-|    Minimum number of control sets                        |    13 |
+| Total control sets                                       |    14 |
+|    Minimum number of control sets                        |    14 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    23 |
+| Unused register locations in slices containing registers |    26 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    13 |
+| Total control sets |    14 |
 | >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     2 |
+| >= 4 to < 6        |     3 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     1 |
-| >= 10 to < 12      |     1 |
+| >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     8 |
+| >= 16              |     9 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              11 |            8 |
+| No           | No                    | No                     |              19 |           13 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              96 |           42 |
-| Yes          | No                    | Yes                    |              32 |           16 |
-| Yes          | Yes                   | No                     |              78 |           43 |
+| Yes          | No                    | No                     |              96 |           50 |
+| Yes          | No                    | Yes                    |              32 |           20 |
+| Yes          | Yes                   | No                     |              83 |           49 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,17 +74,18 @@ Table of Contents
 |  Clock Signal  |                   Enable Signal                   |              Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+---------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG |                                                   |                                            |                1 |              1 |         1.00 |
-|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[2]_0        |                                            |                4 |              4 |         1.00 |
-|  s_clk_BUFG    | my_otter/OTTER_MEMORY/memory_reg_bram_0_i_86_0[0] |                                            |                1 |              4 |         4.00 |
-|  s_clk_BUFG    | my_otter/OTTER_MEMORY/ioBuffer[15]_i_12_0[0]      |                                            |                2 |              8 |         4.00 |
-|  s_clk_BUFG    |                                                   |                                            |                7 |             10 |         1.43 |
+|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[2]_0        |                                            |                2 |              4 |         2.00 |
+|  s_clk_BUFG    | my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85_0[0] |                                            |                1 |              4 |         4.00 |
+|  s_clk_BUFG    | dbounce/sel                                       | dbounce/s_reset                            |                1 |              5 |         5.00 |
+|  s_clk_BUFG    | my_otter/OTTER_MEMORY/ioBuffer[15]_i_12_0[0]      |                                            |                4 |              8 |         2.00 |
 |  s_clk_BUFG    | my_otter/mcuFSM/memrden2                          | my_otter/OTTER_MEMORY/ioBuffer[15]_i_1_n_0 |                8 |             16 |         2.00 |
-|  s_clk_BUFG    | my_otter/OTTER_MEMORY/E[0]                        |                                            |                5 |             16 |         3.20 |
-|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[0]_4        | my_otter/mcuFSM/FSM_sequential_PS_reg[1]_1 |               17 |             30 |         1.76 |
-|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[0]_3        | my_otter/mcuFSM/FSM_sequential_PS_reg[1]_0 |               18 |             32 |         1.78 |
-|  s_clk_BUFG    | my_otter/mcuFSM/E[0]                              | my_otter/mcuFSM/AR[0]                      |               16 |             32 |         2.00 |
-|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[1]_5[0]     |                                            |               19 |             32 |         1.68 |
-|  s_clk_BUFG    | reg_file_reg_r1_0_31_0_5_i_124_n_0                |                                            |               11 |             32 |         2.91 |
+|  s_clk_BUFG    | my_otter/OTTER_MEMORY/E[0]                        |                                            |                7 |             16 |         2.29 |
+|  s_clk_BUFG    |                                                   |                                            |               12 |             18 |         1.50 |
+|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[0]_4        | my_otter/mcuFSM/FSM_sequential_PS_reg[1]_1 |               20 |             30 |         1.50 |
+|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[0]_3        | my_otter/mcuFSM/FSM_sequential_PS_reg[1]_0 |               20 |             32 |         1.60 |
+|  s_clk_BUFG    | my_otter/mcuFSM/E[0]                              | my_otter/mcuFSM/AR[0]                      |               20 |             32 |         1.60 |
+|  s_clk_BUFG    | my_otter/mcuFSM/FSM_sequential_PS_reg[1]_5[0]     |                                            |               21 |             32 |         1.52 |
+|  s_clk_BUFG    | reg_file_reg_r1_0_31_0_5_i_133_n_0                |                                            |               15 |             32 |         2.13 |
 |  s_clk_BUFG    | my_otter/mcuFSM/p_0_in                            |                                            |               11 |             88 |         8.00 |
 +----------------+---------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
 

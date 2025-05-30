@@ -78,6 +78,8 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_Decoder.sv
   C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv
   C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/OTTER_MCU.sv
+  C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/dbounce_v1_02.sv
+  C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/one_shot_posneg_v1_03.sv
   C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/otter_memory_v1_06.sv
   C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/reg_file_v1_02.sv
   C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/OTTER_Wrapper_v1_08.sv

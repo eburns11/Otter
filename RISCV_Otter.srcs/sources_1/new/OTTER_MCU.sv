@@ -176,7 +176,7 @@ module OTTER_MCU(
     mux_4t1_nb  #(.n(32)) REG_MUX  (
        .SEL   (rf_sel), 
        .D0    (plus_4), 
-       .D1    ('0), 
+       .D1    (csr_RD), 
        .D2    (memdout2), 
        .D3    (alu_out),
        .D_OUT (w_data) );

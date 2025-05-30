@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date         : Wed May 28 16:56:42 2025
+| Date         : Fri May 30 00:29:34 2025
 | Host         : DESKTOP-P2N9ID2 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file OTTER_Wrapper_timing_summary_routed.rpt -pb OTTER_Wrapper_timing_summary_routed.pb -rpx OTTER_Wrapper_timing_summary_routed.rpx -warn_on_violation
 | Design       : OTTER_Wrapper
@@ -43,7 +43,7 @@ Timing Summary Report
 
 Rule       Severity          Description                                 Violations  
 ---------  ----------------  ------------------------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell                 336         
+TIMING-17  Critical Warning  Non-clocked sequential cell                 349         
 LUTAR-1    Warning           LUT drives async reset alert                1           
 SYNTH-6    Warning           Timing of a RAM block might be sub-optimal  16          
 
@@ -55,10 +55,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (336)
+1. checking no_clock (349)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (2056)
+4. checking unconstrained_internal_endpoints (2079)
 5. checking no_input_delay (21)
 6. checking no_output_delay (28)
 7. checking multiple_clock (0)
@@ -68,9 +68,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (336)
+1. checking no_clock (349)
 --------------------------
- There are 336 register/latch pins with no clock driven by root clock pin: s_clk_reg/Q (HIGH)
+ There are 349 register/latch pins with no clock driven by root clock pin: s_clk_reg/Q (HIGH)
 
 
 2. checking constant_clock (0)
@@ -83,9 +83,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (2056)
+4. checking unconstrained_internal_endpoints (2079)
 ---------------------------------------------------
- There are 2056 pins that are not constrained for maximum delay. (HIGH)
+ There are 2079 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -260,7 +260,7 @@ Slack (MET) :             8.661ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Prop_fdre_C_Q)         0.456     5.542 f  s_clk_reg/Q
                          net (fo=2, routed)           0.753     6.295    s_clk
     SLICE_X36Y46         LUT1 (Prop_lut1_I0_O)        0.124     6.419 r  s_clk_i_1/O
-                         net (fo=1, routed)           0.000     6.419    p_0_in
+                         net (fo=1, routed)           0.000     6.419    s_clk_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  s_clk_reg/D
   -------------------------------------------------------------------    -------------------
 
@@ -318,7 +318,7 @@ Slack (MET) :             0.380ns  (arrival time - required time)
     SLICE_X36Y46         FDRE (Prop_fdre_C_Q)         0.141     1.587 f  s_clk_reg/Q
                          net (fo=2, routed)           0.285     1.872    s_clk
     SLICE_X36Y46         LUT1 (Prop_lut1_I0_O)        0.045     1.917 r  s_clk_i_1/O
-                         net (fo=1, routed)           0.000     1.917    p_0_in
+                         net (fo=1, routed)           0.000     1.917    s_clk_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  s_clk_reg/D
   -------------------------------------------------------------------    -------------------
 
@@ -365,445 +365,691 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay          2084 Endpoints
-Min Delay          2084 Endpoints
+Max Delay          2107 Endpoints
+Min Delay          2107 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_2/DIADI[19]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[3]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        29.330ns  (logic 4.789ns (16.328%)  route 24.541ns (83.672%))
-  Logic Levels:           13  (LUT2=1 LUT3=1 LUT4=1 LUT5=1 LUT6=6 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.611ns  (logic 6.615ns (21.610%)  route 23.996ns (78.390%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          0.906    11.375    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X40Y1          MUXF7 (Prop_muxf7_S_O)       0.276    11.651 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_145/O
-                         net (fo=99, routed)          3.418    15.068    my_otter/OTTER_MEMORY/alu_b[4]
-    SLICE_X59Y4          LUT6 (Prop_lut6_I4_O)        0.299    15.367 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198/O
-                         net (fo=4, routed)           0.745    16.112    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198_n_0
-    SLICE_X58Y4          LUT6 (Prop_lut6_I0_O)        0.124    16.236 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154/O
-                         net (fo=2, routed)           1.294    17.530    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154_n_0
-    SLICE_X50Y2          LUT6 (Prop_lut6_I2_O)        0.124    17.654 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2/O
-                         net (fo=2, routed)           0.832    18.486    my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2_n_0
-    SLICE_X48Y2          LUT6 (Prop_lut6_I0_O)        0.124    18.610 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_1/O
-                         net (fo=46, routed)          3.038    21.649    my_otter/OTTER_MEMORY/IOBUS_addr[1]
-    SLICE_X30Y8          LUT2 (Prop_lut2_I0_O)        0.152    21.801 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84/O
-                         net (fo=33, routed)          2.249    24.050    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84_n_0
-    SLICE_X44Y11         LUT6 (Prop_lut6_I0_O)        0.348    24.398 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_25/O
-                         net (fo=16, routed)          4.932    29.330    my_otter/OTTER_MEMORY/p_1_in_0[19]
-    RAMB36_X2Y1          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_2/DIADI[19]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.696    29.300    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X59Y9          LUT5 (Prop_lut5_I0_O)        0.326    29.626 r  my_otter/OTTER_MEMORY/memory_reg_bram_4_i_3/O
+                         net (fo=1, routed)           0.985    30.611    my_otter/OTTER_MEMORY/memory_reg_bram_4_i_3_n_0
+    RAMB36_X2Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[3]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_4/DIADI[19]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[2]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        29.193ns  (logic 4.789ns (16.405%)  route 24.404ns (83.595%))
-  Logic Levels:           13  (LUT2=1 LUT3=1 LUT4=1 LUT5=1 LUT6=6 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.596ns  (logic 6.615ns (21.620%)  route 23.981ns (78.380%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          0.906    11.375    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X40Y1          MUXF7 (Prop_muxf7_S_O)       0.276    11.651 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_145/O
-                         net (fo=99, routed)          3.418    15.068    my_otter/OTTER_MEMORY/alu_b[4]
-    SLICE_X59Y4          LUT6 (Prop_lut6_I4_O)        0.299    15.367 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198/O
-                         net (fo=4, routed)           0.745    16.112    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198_n_0
-    SLICE_X58Y4          LUT6 (Prop_lut6_I0_O)        0.124    16.236 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154/O
-                         net (fo=2, routed)           1.294    17.530    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154_n_0
-    SLICE_X50Y2          LUT6 (Prop_lut6_I2_O)        0.124    17.654 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2/O
-                         net (fo=2, routed)           0.832    18.486    my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2_n_0
-    SLICE_X48Y2          LUT6 (Prop_lut6_I0_O)        0.124    18.610 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_1/O
-                         net (fo=46, routed)          3.038    21.649    my_otter/OTTER_MEMORY/IOBUS_addr[1]
-    SLICE_X30Y8          LUT2 (Prop_lut2_I0_O)        0.152    21.801 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84/O
-                         net (fo=33, routed)          2.249    24.050    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84_n_0
-    SLICE_X44Y11         LUT6 (Prop_lut6_I0_O)        0.348    24.398 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_25/O
-                         net (fo=16, routed)          4.795    29.193    my_otter/OTTER_MEMORY/p_1_in_0[19]
-    RAMB36_X2Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_4/DIADI[19]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.867    29.472    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y9          LUT5 (Prop_lut5_I0_O)        0.326    29.798 r  my_otter/OTTER_MEMORY/memory_reg_bram_6_i_4/O
+                         net (fo=1, routed)           0.799    30.596    my_otter/OTTER_MEMORY/memory_reg_bram_6_i_4_n_0
+    RAMB36_X2Y1          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[2]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[1]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[3]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.987ns  (logic 5.107ns (17.618%)  route 23.880ns (82.382%))
-  Logic Levels:           14  (LUT3=2 LUT4=3 LUT5=3 LUT6=3 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.533ns  (logic 6.615ns (21.665%)  route 23.918ns (78.335%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          1.064    11.533    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X38Y2          MUXF7 (Prop_muxf7_S_O)       0.292    11.825 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_156/O
-                         net (fo=111, routed)         3.986    15.811    my_otter/OTTER_MEMORY/alu_b[2]
-    SLICE_X58Y9          LUT5 (Prop_lut5_I4_O)        0.297    16.108 f  my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12/O
-                         net (fo=2, routed)           0.889    16.997    my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12_n_0
-    SLICE_X59Y9          LUT3 (Prop_lut3_I0_O)        0.152    17.149 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7/O
-                         net (fo=2, routed)           0.830    17.979    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7_n_0
-    SLICE_X55Y9          LUT6 (Prop_lut6_I4_O)        0.332    18.311 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2/O
-                         net (fo=1, routed)           0.965    19.277    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2_n_0
-    SLICE_X52Y11         LUT6 (Prop_lut6_I0_O)        0.124    19.401 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_1/O
-                         net (fo=6, routed)           2.177    21.578    my_otter/OTTER_MEMORY/IOBUS_addr[27]
-    SLICE_X36Y13         LUT4 (Prop_lut4_I1_O)        0.124    21.702 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161/O
-                         net (fo=25, routed)          1.127    22.829    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_n_0
-    SLICE_X31Y8          LUT4 (Prop_lut4_I0_O)        0.118    22.947 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_86/O
-                         net (fo=91, routed)          5.012    27.959    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_164_0
-    SLICE_X48Y4          LUT5 (Prop_lut5_I0_O)        0.326    28.285 r  my_otter/OTTER_MEMORY/memory_reg_bram_8_i_5/O
-                         net (fo=1, routed)           0.702    28.987    my_otter/OTTER_MEMORY/memory_reg_bram_8_i_5_n_0
-    RAMB36_X1Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[1]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.864    29.468    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X59Y9          LUT5 (Prop_lut5_I0_O)        0.326    29.794 r  my_otter/OTTER_MEMORY/memory_reg_bram_6_i_3/O
+                         net (fo=1, routed)           0.739    30.533    my_otter/OTTER_MEMORY/memory_reg_bram_6_i_3_n_0
+    RAMB36_X2Y1          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[3]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_9/WEA[2]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[1]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.872ns  (logic 5.107ns (17.688%)  route 23.765ns (82.312%))
-  Logic Levels:           14  (LUT3=2 LUT4=3 LUT5=3 LUT6=3 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.529ns  (logic 6.615ns (21.668%)  route 23.914ns (78.332%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          1.064    11.533    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X38Y2          MUXF7 (Prop_muxf7_S_O)       0.292    11.825 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_156/O
-                         net (fo=111, routed)         3.986    15.811    my_otter/OTTER_MEMORY/alu_b[2]
-    SLICE_X58Y9          LUT5 (Prop_lut5_I4_O)        0.297    16.108 f  my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12/O
-                         net (fo=2, routed)           0.889    16.997    my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12_n_0
-    SLICE_X59Y9          LUT3 (Prop_lut3_I0_O)        0.152    17.149 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7/O
-                         net (fo=2, routed)           0.830    17.979    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7_n_0
-    SLICE_X55Y9          LUT6 (Prop_lut6_I4_O)        0.332    18.311 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2/O
-                         net (fo=1, routed)           0.965    19.277    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2_n_0
-    SLICE_X52Y11         LUT6 (Prop_lut6_I0_O)        0.124    19.401 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_1/O
-                         net (fo=6, routed)           2.177    21.578    my_otter/OTTER_MEMORY/IOBUS_addr[27]
-    SLICE_X36Y13         LUT4 (Prop_lut4_I1_O)        0.124    21.702 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161/O
-                         net (fo=25, routed)          1.127    22.829    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_n_0
-    SLICE_X31Y8          LUT4 (Prop_lut4_I0_O)        0.118    22.947 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_86/O
-                         net (fo=91, routed)          5.069    28.016    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_164_0
-    SLICE_X48Y7          LUT5 (Prop_lut5_I0_O)        0.326    28.342 r  my_otter/OTTER_MEMORY/memory_reg_bram_9_i_4/O
-                         net (fo=1, routed)           0.531    28.872    my_otter/OTTER_MEMORY/memory_reg_bram_9_i_4_n_0
-    RAMB36_X1Y1          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_9/WEA[2]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.869    29.473    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y9          LUT5 (Prop_lut5_I0_O)        0.326    29.799 r  my_otter/OTTER_MEMORY/memory_reg_bram_6_i_5/O
+                         net (fo=1, routed)           0.730    30.529    my_otter/OTTER_MEMORY/memory_reg_bram_6_i_5_n_0
+    RAMB36_X2Y1          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[1]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[0]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[1]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.844ns  (logic 5.107ns (17.706%)  route 23.737ns (82.294%))
-  Logic Levels:           14  (LUT3=2 LUT4=3 LUT5=3 LUT6=3 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.252ns  (logic 6.615ns (21.867%)  route 23.637ns (78.133%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          1.064    11.533    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X38Y2          MUXF7 (Prop_muxf7_S_O)       0.292    11.825 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_156/O
-                         net (fo=111, routed)         3.986    15.811    my_otter/OTTER_MEMORY/alu_b[2]
-    SLICE_X58Y9          LUT5 (Prop_lut5_I4_O)        0.297    16.108 f  my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12/O
-                         net (fo=2, routed)           0.889    16.997    my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12_n_0
-    SLICE_X59Y9          LUT3 (Prop_lut3_I0_O)        0.152    17.149 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7/O
-                         net (fo=2, routed)           0.830    17.979    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7_n_0
-    SLICE_X55Y9          LUT6 (Prop_lut6_I4_O)        0.332    18.311 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2/O
-                         net (fo=1, routed)           0.965    19.277    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2_n_0
-    SLICE_X52Y11         LUT6 (Prop_lut6_I0_O)        0.124    19.401 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_1/O
-                         net (fo=6, routed)           2.177    21.578    my_otter/OTTER_MEMORY/IOBUS_addr[27]
-    SLICE_X36Y13         LUT4 (Prop_lut4_I1_O)        0.124    21.702 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161/O
-                         net (fo=25, routed)          1.127    22.829    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_n_0
-    SLICE_X31Y8          LUT4 (Prop_lut4_I0_O)        0.118    22.947 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_86/O
-                         net (fo=91, routed)          5.013    27.960    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_164_0
-    SLICE_X48Y4          LUT5 (Prop_lut5_I0_O)        0.326    28.286 r  my_otter/OTTER_MEMORY/memory_reg_bram_8_i_6/O
-                         net (fo=1, routed)           0.558    28.844    my_otter/OTTER_MEMORY/memory_reg_bram_8_i_6_n_0
-    RAMB36_X1Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[0]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.527    29.132    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y10         LUT5 (Prop_lut5_I0_O)        0.326    29.458 r  my_otter/OTTER_MEMORY/memory_reg_bram_4_i_5/O
+                         net (fo=1, routed)           0.794    30.252    my_otter/OTTER_MEMORY/memory_reg_bram_4_i_5_n_0
+    RAMB36_X2Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[1]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_10/DIADI[19]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[2]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.835ns  (logic 4.789ns (16.608%)  route 24.046ns (83.392%))
-  Logic Levels:           13  (LUT2=1 LUT3=1 LUT4=1 LUT5=1 LUT6=6 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.246ns  (logic 6.615ns (21.871%)  route 23.631ns (78.129%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          0.906    11.375    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X40Y1          MUXF7 (Prop_muxf7_S_O)       0.276    11.651 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_145/O
-                         net (fo=99, routed)          3.418    15.068    my_otter/OTTER_MEMORY/alu_b[4]
-    SLICE_X59Y4          LUT6 (Prop_lut6_I4_O)        0.299    15.367 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198/O
-                         net (fo=4, routed)           0.745    16.112    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198_n_0
-    SLICE_X58Y4          LUT6 (Prop_lut6_I0_O)        0.124    16.236 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154/O
-                         net (fo=2, routed)           1.294    17.530    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154_n_0
-    SLICE_X50Y2          LUT6 (Prop_lut6_I2_O)        0.124    17.654 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2/O
-                         net (fo=2, routed)           0.832    18.486    my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2_n_0
-    SLICE_X48Y2          LUT6 (Prop_lut6_I0_O)        0.124    18.610 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_1/O
-                         net (fo=46, routed)          3.038    21.649    my_otter/OTTER_MEMORY/IOBUS_addr[1]
-    SLICE_X30Y8          LUT2 (Prop_lut2_I0_O)        0.152    21.801 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84/O
-                         net (fo=33, routed)          2.249    24.050    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84_n_0
-    SLICE_X44Y11         LUT6 (Prop_lut6_I0_O)        0.348    24.398 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_25/O
-                         net (fo=16, routed)          4.437    28.835    my_otter/OTTER_MEMORY/p_1_in_0[19]
-    RAMB36_X2Y2          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_10/DIADI[19]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.477    29.082    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y9          LUT5 (Prop_lut5_I0_O)        0.326    29.408 r  my_otter/OTTER_MEMORY/memory_reg_bram_4_i_4/O
+                         net (fo=1, routed)           0.838    30.246    my_otter/OTTER_MEMORY/memory_reg_bram_4_i_4_n_0
+    RAMB36_X2Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[2]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[2]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[0]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.798ns  (logic 5.107ns (17.734%)  route 23.691ns (82.266%))
-  Logic Levels:           14  (LUT3=2 LUT4=3 LUT5=3 LUT6=3 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.241ns  (logic 6.615ns (21.875%)  route 23.626ns (78.125%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          1.064    11.533    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X38Y2          MUXF7 (Prop_muxf7_S_O)       0.292    11.825 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_156/O
-                         net (fo=111, routed)         3.986    15.811    my_otter/OTTER_MEMORY/alu_b[2]
-    SLICE_X58Y9          LUT5 (Prop_lut5_I4_O)        0.297    16.108 f  my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12/O
-                         net (fo=2, routed)           0.889    16.997    my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12_n_0
-    SLICE_X59Y9          LUT3 (Prop_lut3_I0_O)        0.152    17.149 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7/O
-                         net (fo=2, routed)           0.830    17.979    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7_n_0
-    SLICE_X55Y9          LUT6 (Prop_lut6_I4_O)        0.332    18.311 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2/O
-                         net (fo=1, routed)           0.965    19.277    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2_n_0
-    SLICE_X52Y11         LUT6 (Prop_lut6_I0_O)        0.124    19.401 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_1/O
-                         net (fo=6, routed)           2.177    21.578    my_otter/OTTER_MEMORY/IOBUS_addr[27]
-    SLICE_X36Y13         LUT4 (Prop_lut4_I1_O)        0.124    21.702 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161/O
-                         net (fo=25, routed)          1.127    22.829    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_n_0
-    SLICE_X31Y8          LUT4 (Prop_lut4_I0_O)        0.118    22.947 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_86/O
-                         net (fo=91, routed)          4.820    27.767    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_164_0
-    SLICE_X48Y5          LUT5 (Prop_lut5_I0_O)        0.326    28.093 r  my_otter/OTTER_MEMORY/memory_reg_bram_8_i_4/O
-                         net (fo=1, routed)           0.706    28.798    my_otter/OTTER_MEMORY/memory_reg_bram_8_i_4_n_0
-    RAMB36_X1Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[2]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.378    28.982    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y11         LUT5 (Prop_lut5_I0_O)        0.326    29.308 r  my_otter/OTTER_MEMORY/memory_reg_bram_4_i_6/O
+                         net (fo=1, routed)           0.933    30.241    my_otter/OTTER_MEMORY/memory_reg_bram_4_i_6_n_0
+    RAMB36_X2Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_4/WEA[0]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[3]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[0]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.748ns  (logic 5.107ns (17.765%)  route 23.641ns (82.235%))
-  Logic Levels:           14  (LUT3=2 LUT4=3 LUT5=3 LUT6=3 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        30.094ns  (logic 6.615ns (21.981%)  route 23.479ns (78.019%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=2 LUT6=3 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          1.064    11.533    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X38Y2          MUXF7 (Prop_muxf7_S_O)       0.292    11.825 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_156/O
-                         net (fo=111, routed)         3.986    15.811    my_otter/OTTER_MEMORY/alu_b[2]
-    SLICE_X58Y9          LUT5 (Prop_lut5_I4_O)        0.297    16.108 f  my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12/O
-                         net (fo=2, routed)           0.889    16.997    my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12_n_0
-    SLICE_X59Y9          LUT3 (Prop_lut3_I0_O)        0.152    17.149 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7/O
-                         net (fo=2, routed)           0.830    17.979    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7_n_0
-    SLICE_X55Y9          LUT6 (Prop_lut6_I4_O)        0.332    18.311 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2/O
-                         net (fo=1, routed)           0.965    19.277    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2_n_0
-    SLICE_X52Y11         LUT6 (Prop_lut6_I0_O)        0.124    19.401 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_1/O
-                         net (fo=6, routed)           2.177    21.578    my_otter/OTTER_MEMORY/IOBUS_addr[27]
-    SLICE_X36Y13         LUT4 (Prop_lut4_I1_O)        0.124    21.702 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161/O
-                         net (fo=25, routed)          1.127    22.829    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_n_0
-    SLICE_X31Y8          LUT4 (Prop_lut4_I0_O)        0.118    22.947 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_86/O
-                         net (fo=91, routed)          4.852    27.799    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_164_0
-    SLICE_X48Y5          LUT5 (Prop_lut5_I0_O)        0.326    28.125 r  my_otter/OTTER_MEMORY/memory_reg_bram_8_i_3/O
-                         net (fo=1, routed)           0.623    28.748    my_otter/OTTER_MEMORY/memory_reg_bram_8_i_3_n_0
-    RAMB36_X1Y0          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_8/WEA[3]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.370    28.974    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y11         LUT5 (Prop_lut5_I0_O)        0.326    29.300 r  my_otter/OTTER_MEMORY/memory_reg_bram_6_i_6/O
+                         net (fo=1, routed)           0.794    30.094    my_otter/OTTER_MEMORY/memory_reg_bram_6_i_6_n_0
+    RAMB36_X2Y1          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_6/WEA[0]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_12/WEA[3]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_1/WEA[2]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.747ns  (logic 4.913ns (17.091%)  route 23.834ns (82.909%))
-  Logic Levels:           14  (LUT2=1 LUT3=1 LUT4=1 LUT5=2 LUT6=6 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        29.927ns  (logic 6.615ns (22.103%)  route 23.312ns (77.897%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=1 LUT6=4 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          0.906    11.375    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X40Y1          MUXF7 (Prop_muxf7_S_O)       0.276    11.651 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_145/O
-                         net (fo=99, routed)          3.418    15.068    my_otter/OTTER_MEMORY/alu_b[4]
-    SLICE_X59Y4          LUT6 (Prop_lut6_I4_O)        0.299    15.367 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198/O
-                         net (fo=4, routed)           0.745    16.112    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_198_n_0
-    SLICE_X58Y4          LUT6 (Prop_lut6_I0_O)        0.124    16.236 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154/O
-                         net (fo=2, routed)           1.294    17.530    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_154_n_0
-    SLICE_X50Y2          LUT6 (Prop_lut6_I2_O)        0.124    17.654 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2/O
-                         net (fo=2, routed)           0.832    18.486    my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_2_n_0
-    SLICE_X48Y2          LUT6 (Prop_lut6_I0_O)        0.124    18.610 f  my_otter/OTTER_MEMORY/CSR_MTVEC[1]_i_1/O
-                         net (fo=46, routed)          3.038    21.649    my_otter/OTTER_MEMORY/IOBUS_addr[1]
-    SLICE_X30Y8          LUT2 (Prop_lut2_I0_O)        0.152    21.801 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84/O
-                         net (fo=33, routed)          0.827    22.628    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_84_n_0
-    SLICE_X32Y12         LUT5 (Prop_lut5_I3_O)        0.348    22.976 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_88/O
-                         net (fo=64, routed)          4.569    27.545    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_88_n_0
-    SLICE_X48Y27         LUT6 (Prop_lut6_I4_O)        0.124    27.669 r  my_otter/OTTER_MEMORY/memory_reg_bram_12_i_3/O
-                         net (fo=1, routed)           1.078    28.747    my_otter/OTTER_MEMORY/memory_reg_bram_12_i_3_n_0
-    RAMB36_X1Y7          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_12/WEA[3]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.369    28.973    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y12         LUT6 (Prop_lut6_I2_O)        0.326    29.299 r  my_otter/OTTER_MEMORY/memory_reg_bram_1_i_4/O
+                         net (fo=1, routed)           0.628    29.927    my_otter/OTTER_MEMORY/memory_reg_bram_1_i_4_n_0
+    RAMB36_X2Y2          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_1/WEA[2]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
+  Source:                 my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
                             (rising edge-triggered cell RAMB36E1)
-  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_9/WEA[1]
+  Destination:            my_otter/OTTER_MEMORY/memory_reg_bram_1/WEA[3]
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.700ns  (logic 5.107ns (17.794%)  route 23.593ns (82.206%))
-  Logic Levels:           14  (LUT3=2 LUT4=3 LUT5=3 LUT6=3 MUXF7=2 RAMB36E1=1)
+  Data Path Delay:        29.702ns  (logic 6.615ns (22.271%)  route 23.087ns (77.729%))
+  Logic Levels:           22  (CARRY4=8 LUT3=1 LUT4=5 LUT5=1 LUT6=4 MUXF7=2 RAMB36E1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    RAMB36_X0Y3          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/CLKBWRCLK
-    RAMB36_X0Y3          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[1])
-                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_7/DOBDO[1]
-                         net (fo=1, routed)           2.398     4.852    my_otter/OTTER_MEMORY/memory_reg_bram_7_n_66
-    SLICE_X55Y17         LUT6 (Prop_lut6_I0_O)        0.124     4.976 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13/O
-                         net (fo=1, routed)           0.000     4.976    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_13_n_0
-    SLICE_X55Y17         MUXF7 (Prop_muxf7_I1_O)      0.217     5.193 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
-                         net (fo=1, routed)           1.040     6.233    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
-    SLICE_X50Y14         LUT5 (Prop_lut5_I2_O)        0.299     6.532 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_3/O
-                         net (fo=12, routed)          2.543     9.075    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
-    SLICE_X33Y3          LUT3 (Prop_lut3_I0_O)        0.124     9.199 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
-                         net (fo=22, routed)          1.145    10.344    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_40
-    SLICE_X45Y3          LUT4 (Prop_lut4_I0_O)        0.124    10.468 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_38/O
-                         net (fo=35, routed)          1.064    11.533    my_otter/ALU_MUX_B/alu_b_sel[1]
-    SLICE_X38Y2          MUXF7 (Prop_muxf7_S_O)       0.292    11.825 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_156/O
-                         net (fo=111, routed)         3.986    15.811    my_otter/OTTER_MEMORY/alu_b[2]
-    SLICE_X58Y9          LUT5 (Prop_lut5_I4_O)        0.297    16.108 f  my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12/O
-                         net (fo=2, routed)           0.889    16.997    my_otter/OTTER_MEMORY/CSR_MTVEC[29]_i_12_n_0
-    SLICE_X59Y9          LUT3 (Prop_lut3_I0_O)        0.152    17.149 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7/O
-                         net (fo=2, routed)           0.830    17.979    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_7_n_0
-    SLICE_X55Y9          LUT6 (Prop_lut6_I4_O)        0.332    18.311 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2/O
-                         net (fo=1, routed)           0.965    19.277    my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_2_n_0
-    SLICE_X52Y11         LUT6 (Prop_lut6_I0_O)        0.124    19.401 f  my_otter/OTTER_MEMORY/CSR_MTVEC[27]_i_1/O
-                         net (fo=6, routed)           2.177    21.578    my_otter/OTTER_MEMORY/IOBUS_addr[27]
-    SLICE_X36Y13         LUT4 (Prop_lut4_I1_O)        0.124    21.702 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161/O
-                         net (fo=25, routed)          1.127    22.829    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_n_0
-    SLICE_X31Y8          LUT4 (Prop_lut4_I0_O)        0.118    22.947 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_86/O
-                         net (fo=91, routed)          4.897    27.844    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_164_0
-    SLICE_X49Y7          LUT5 (Prop_lut5_I0_O)        0.326    28.170 r  my_otter/OTTER_MEMORY/memory_reg_bram_9_i_5/O
-                         net (fo=1, routed)           0.530    28.700    my_otter/OTTER_MEMORY/memory_reg_bram_9_i_5_n_0
-    RAMB36_X1Y1          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_9/WEA[1]
+    RAMB36_X1Y7          RAMB36E1                     0.000     0.000 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/CLKBWRCLK
+    RAMB36_X1Y7          RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[0])
+                                                      2.454     2.454 r  my_otter/OTTER_MEMORY/memory_reg_bram_8/DOBDO[0]
+                         net (fo=1, routed)           2.211     4.665    my_otter/OTTER_MEMORY/memory_reg_bram_8_n_67
+    SLICE_X48Y14         LUT6 (Prop_lut6_I5_O)        0.124     4.789 r  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11/O
+                         net (fo=1, routed)           0.000     4.789    my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_11_n_0
+    SLICE_X48Y14         MUXF7 (Prop_muxf7_I0_O)      0.212     5.001 r  my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6/O
+                         net (fo=1, routed)           0.951     5.953    my_otter/OTTER_MEMORY/FSM_sequential_PS_reg[2]_i_6_n_0
+    SLICE_X48Y17         LUT5 (Prop_lut5_I1_O)        0.299     6.252 f  my_otter/OTTER_MEMORY/FSM_sequential_PS[2]_i_4/O
+                         net (fo=12, routed)          2.127     8.378    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_0
+    SLICE_X31Y7          LUT3 (Prop_lut3_I0_O)        0.124     8.502 f  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_18/O
+                         net (fo=22, routed)          1.582    10.085    my_otter/OTTER_MEMORY/memory_reg_mux_sel_b_pos_0_10
+    SLICE_X42Y7          LUT4 (Prop_lut4_I0_O)        0.124    10.209 r  my_otter/OTTER_MEMORY/memory_mux_sel_a_pos_3_i_39/O
+                         net (fo=35, routed)          1.005    11.214    my_otter/ALU_MUX_B/alu_b_sel[1]
+    SLICE_X37Y8          MUXF7 (Prop_muxf7_S_O)       0.276    11.490 r  my_otter/ALU_MUX_B/memory_reg_bram_0_i_153/O
+                         net (fo=111, routed)         2.743    14.233    my_otter/OTTER_MEMORY/alu_b[2]
+    SLICE_X49Y5          LUT4 (Prop_lut4_I3_O)        0.299    14.532 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233/O
+                         net (fo=1, routed)           0.000    14.532    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_233_n_0
+    SLICE_X49Y5          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    14.930 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203/CO[3]
+                         net (fo=1, routed)           0.000    14.930    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_203_n_0
+    SLICE_X49Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.044 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188/CO[3]
+                         net (fo=1, routed)           0.000    15.044    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_188_n_0
+    SLICE_X49Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.158 r  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167/CO[3]
+                         net (fo=1, routed)           0.000    15.158    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_167_n_0
+    SLICE_X49Y8          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.272 r  my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32/CO[3]
+                         net (fo=1, routed)           0.000    15.272    my_otter/OTTER_MEMORY/memory_reg_mux_sel_a_pos_3_i_32_n_0
+    SLICE_X49Y9          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.386 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.386    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[19]_i_13_n_0
+    SLICE_X49Y10         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.500 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13/CO[3]
+                         net (fo=1, routed)           0.000    15.500    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[23]_i_13_n_0
+    SLICE_X49Y11         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    15.614 r  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40/CO[3]
+                         net (fo=1, routed)           0.000    15.614    my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_40_n_0
+    SLICE_X49Y12         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    15.853 f  my_otter/OTTER_MEMORY/CSR_MTVEC_reg[31]_i_21/O[2]
+                         net (fo=1, routed)           1.324    17.177    my_otter/OTTER_MEMORY/ALU/data1[30]
+    SLICE_X55Y12         LUT4 (Prop_lut4_I2_O)        0.302    17.479 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6/O
+                         net (fo=1, routed)           1.123    18.601    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_6_n_0
+    SLICE_X56Y15         LUT6 (Prop_lut6_I1_O)        0.124    18.725 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2/O
+                         net (fo=1, routed)           0.411    19.137    my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_2_n_0
+    SLICE_X55Y15         LUT6 (Prop_lut6_I0_O)        0.124    19.261 f  my_otter/OTTER_MEMORY/CSR_MTVEC[30]_i_1/O
+                         net (fo=7, routed)           2.266    21.527    my_otter/OTTER_MEMORY/IOBUS_addr[30]
+    SLICE_X33Y15         LUT4 (Prop_lut4_I2_O)        0.152    21.679 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159/O
+                         net (fo=25, routed)          1.571    23.250    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_159_n_0
+    SLICE_X32Y12         LUT4 (Prop_lut4_I1_O)        0.354    23.604 f  my_otter/OTTER_MEMORY/memory_reg_bram_0_i_85/O
+                         net (fo=91, routed)          5.052    28.656    my_otter/OTTER_MEMORY/memory_reg_bram_0_i_161_0
+    SLICE_X58Y13         LUT6 (Prop_lut6_I2_O)        0.326    28.982 r  my_otter/OTTER_MEMORY/memory_reg_bram_1_i_3/O
+                         net (fo=1, routed)           0.720    29.702    my_otter/OTTER_MEMORY/memory_reg_bram_1_i_3_n_0
+    RAMB36_X2Y2          RAMB36E1                                     r  my_otter/OTTER_MEMORY/memory_reg_bram_1/WEA[3]
   -------------------------------------------------------------------    -------------------
 
 
@@ -813,47 +1059,147 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 my_otter/my_csr/CSR_MTVEC_reg[3]/C
+  Source:                 dbounce/r_buff_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            my_otter/PC/data_out_reg[3]/D
+  Destination:            my_oneshot/r_dff1_reg/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.256ns  (logic 0.186ns (72.524%)  route 0.070ns (27.476%))
+  Data Path Delay:        0.231ns  (logic 0.164ns (70.995%)  route 0.067ns (29.005%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X30Y1          FDRE                         0.000     0.000 r  dbounce/r_buff_reg/C
+    SLICE_X30Y1          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  dbounce/r_buff_reg/Q
+                         net (fo=2, routed)           0.067     0.231    my_oneshot/r_buff
+    SLICE_X30Y1          FDRE                                         r  my_oneshot/r_dff1_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_otter/my_csr/CSR_MTVEC_reg[29]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            my_otter/PC/data_out_reg[29]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.256ns  (logic 0.186ns (72.773%)  route 0.070ns (27.227%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X37Y2          FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MTVEC_reg[3]/C
-    SLICE_X37Y2          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MTVEC_reg[3]/Q
-                         net (fo=2, routed)           0.070     0.211    my_otter/PC_MUX/mtvec[3]
-    SLICE_X36Y2          LUT6 (Prop_lut6_I0_O)        0.045     0.256 r  my_otter/PC_MUX/data_out[3]_i_1/O
-                         net (fo=1, routed)           0.000     0.256    my_otter/PC/D[3]
-    SLICE_X36Y2          FDCE                                         r  my_otter/PC/data_out_reg[3]/D
+    SLICE_X41Y19         FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MTVEC_reg[29]/C
+    SLICE_X41Y19         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MTVEC_reg[29]/Q
+                         net (fo=2, routed)           0.070     0.211    my_otter/PC_MUX/mtvec[29]
+    SLICE_X40Y19         LUT6 (Prop_lut6_I0_O)        0.045     0.256 r  my_otter/PC_MUX/data_out[29]_i_1/O
+                         net (fo=1, routed)           0.000     0.256    my_otter/PC/D[29]
+    SLICE_X40Y19         FDCE                                         r  my_otter/PC/data_out_reg[29]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/my_csr/CSR_MEPC_reg[9]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            my_otter/PC/data_out_reg[9]/D
+  Source:                 dbounce/r_count_reg[4]_inv/C
+                            (rising edge-triggered cell FDSE)
+  Destination:            dbounce/r_count_reg[0]/CE
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.272ns  (logic 0.209ns (76.771%)  route 0.063ns (23.229%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
+  Data Path Delay:        0.272ns  (logic 0.141ns (51.809%)  route 0.131ns (48.191%))
+  Logic Levels:           1  (FDSE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X34Y4          FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MEPC_reg[9]/C
-    SLICE_X34Y4          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  my_otter/my_csr/CSR_MEPC_reg[9]/Q
-                         net (fo=2, routed)           0.063     0.227    my_otter/PC_MUX/Q[9]
-    SLICE_X35Y4          LUT6 (Prop_lut6_I2_O)        0.045     0.272 r  my_otter/PC_MUX/data_out[9]_i_1/O
-                         net (fo=1, routed)           0.000     0.272    my_otter/PC/D[9]
-    SLICE_X35Y4          FDCE                                         r  my_otter/PC/data_out_reg[9]/D
+    SLICE_X28Y1          FDSE                         0.000     0.000 r  dbounce/r_count_reg[4]_inv/C
+    SLICE_X28Y1          FDSE (Prop_fdse_C_Q)         0.141     0.141 r  dbounce/r_count_reg[4]_inv/Q
+                         net (fo=6, routed)           0.131     0.272    dbounce/sel
+    SLICE_X28Y1          FDRE                                         r  dbounce/r_count_reg[0]/CE
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/my_csr/CSR_MTVEC_reg[12]/C
+  Source:                 dbounce/r_count_reg[4]_inv/C
+                            (rising edge-triggered cell FDSE)
+  Destination:            dbounce/r_count_reg[1]/CE
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.272ns  (logic 0.141ns (51.809%)  route 0.131ns (48.191%))
+  Logic Levels:           1  (FDSE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y1          FDSE                         0.000     0.000 r  dbounce/r_count_reg[4]_inv/C
+    SLICE_X28Y1          FDSE (Prop_fdse_C_Q)         0.141     0.141 r  dbounce/r_count_reg[4]_inv/Q
+                         net (fo=6, routed)           0.131     0.272    dbounce/sel
+    SLICE_X28Y1          FDRE                                         r  dbounce/r_count_reg[1]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dbounce/r_count_reg[4]_inv/C
+                            (rising edge-triggered cell FDSE)
+  Destination:            dbounce/r_count_reg[2]/CE
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.272ns  (logic 0.141ns (51.809%)  route 0.131ns (48.191%))
+  Logic Levels:           1  (FDSE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y1          FDSE                         0.000     0.000 r  dbounce/r_count_reg[4]_inv/C
+    SLICE_X28Y1          FDSE (Prop_fdse_C_Q)         0.141     0.141 r  dbounce/r_count_reg[4]_inv/Q
+                         net (fo=6, routed)           0.131     0.272    dbounce/sel
+    SLICE_X28Y1          FDRE                                         r  dbounce/r_count_reg[2]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dbounce/r_count_reg[4]_inv/C
+                            (rising edge-triggered cell FDSE)
+  Destination:            dbounce/r_count_reg[3]/CE
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.272ns  (logic 0.141ns (51.809%)  route 0.131ns (48.191%))
+  Logic Levels:           1  (FDSE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y1          FDSE                         0.000     0.000 r  dbounce/r_count_reg[4]_inv/C
+    SLICE_X28Y1          FDSE (Prop_fdse_C_Q)         0.141     0.141 r  dbounce/r_count_reg[4]_inv/Q
+                         net (fo=6, routed)           0.131     0.272    dbounce/sel
+    SLICE_X28Y1          FDRE                                         r  dbounce/r_count_reg[3]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dbounce/r_count_reg[4]_inv/C
+                            (rising edge-triggered cell FDSE)
+  Destination:            dbounce/r_count_reg[4]_inv/CE
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.272ns  (logic 0.141ns (51.809%)  route 0.131ns (48.191%))
+  Logic Levels:           1  (FDSE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y1          FDSE                         0.000     0.000 r  dbounce/r_count_reg[4]_inv/C
+    SLICE_X28Y1          FDSE (Prop_fdse_C_Q)         0.141     0.141 r  dbounce/r_count_reg[4]_inv/Q
+                         net (fo=6, routed)           0.131     0.272    dbounce/sel
+    SLICE_X28Y1          FDSE                                         r  dbounce/r_count_reg[4]_inv/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_oneshot/r_dff1_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            my_otter/PC/data_out_reg[12]/D
+  Destination:            my_oneshot/r_dff2_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.282ns  (logic 0.148ns (52.572%)  route 0.134ns (47.428%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X30Y1          FDRE                         0.000     0.000 r  my_oneshot/r_dff1_reg/C
+    SLICE_X30Y1          FDRE (Prop_fdre_C_Q)         0.148     0.148 r  my_oneshot/r_dff1_reg/Q
+                         net (fo=2, routed)           0.134     0.282    my_oneshot/r_dff1
+    SLICE_X30Y1          FDRE                                         r  my_oneshot/r_dff2_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_otter/my_csr/CSR_MTVEC_reg[13]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            my_otter/PC/data_out_reg[13]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.284ns  (logic 0.186ns (65.445%)  route 0.098ns (34.555%))
@@ -861,145 +1207,31 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X35Y3          FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MTVEC_reg[12]/C
-    SLICE_X35Y3          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MTVEC_reg[12]/Q
-                         net (fo=2, routed)           0.098     0.239    my_otter/PC_MUX/mtvec[12]
-    SLICE_X34Y3          LUT6 (Prop_lut6_I0_O)        0.045     0.284 r  my_otter/PC_MUX/data_out[12]_i_1/O
-                         net (fo=1, routed)           0.000     0.284    my_otter/PC/D[12]
-    SLICE_X34Y3          FDCE                                         r  my_otter/PC/data_out_reg[12]/D
+    SLICE_X35Y12         FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MTVEC_reg[13]/C
+    SLICE_X35Y12         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MTVEC_reg[13]/Q
+                         net (fo=2, routed)           0.098     0.239    my_otter/PC_MUX/mtvec[13]
+    SLICE_X34Y12         LUT6 (Prop_lut6_I0_O)        0.045     0.284 r  my_otter/PC_MUX/data_out[13]_i_1/O
+                         net (fo=1, routed)           0.000     0.284    my_otter/PC/D[13]
+    SLICE_X34Y12         FDCE                                         r  my_otter/PC/data_out_reg[13]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_otter/PC/data_out_reg[24]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            my_otter/my_csr/CSR_MEPC_reg[24]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.285ns  (logic 0.186ns (65.306%)  route 0.099ns (34.694%))
-  Logic Levels:           2  (FDCE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X44Y11         FDCE                         0.000     0.000 r  my_otter/PC/data_out_reg[24]/C
-    SLICE_X44Y11         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  my_otter/PC/data_out_reg[24]/Q
-                         net (fo=9, routed)           0.099     0.240    my_otter/mcuFSM/Q[24]
-    SLICE_X45Y11         LUT6 (Prop_lut6_I4_O)        0.045     0.285 r  my_otter/mcuFSM/CSR_MEPC[24]_i_1/O
-                         net (fo=1, routed)           0.000     0.285    my_otter/my_csr/D[24]
-    SLICE_X45Y11         FDRE                                         r  my_otter/my_csr/CSR_MEPC_reg[24]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_otter/PC/data_out_reg[18]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            my_otter/my_csr/CSR_MEPC_reg[18]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.285ns  (logic 0.186ns (65.209%)  route 0.099ns (34.791%))
-  Logic Levels:           2  (FDCE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X35Y7          FDCE                         0.000     0.000 r  my_otter/PC/data_out_reg[18]/C
-    SLICE_X35Y7          FDCE (Prop_fdce_C_Q)         0.141     0.141 r  my_otter/PC/data_out_reg[18]/Q
-                         net (fo=8, routed)           0.099     0.240    my_otter/mcuFSM/Q[18]
-    SLICE_X34Y7          LUT6 (Prop_lut6_I4_O)        0.045     0.285 r  my_otter/mcuFSM/CSR_MEPC[18]_i_1/O
-                         net (fo=1, routed)           0.000     0.285    my_otter/my_csr/D[18]
-    SLICE_X34Y7          FDRE                                         r  my_otter/my_csr/CSR_MEPC_reg[18]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_otter/my_csr/CSR_MTVEC_reg[10]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            my_otter/PC/data_out_reg[10]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.294ns  (logic 0.186ns (63.272%)  route 0.108ns (36.728%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X37Y2          FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MTVEC_reg[10]/C
-    SLICE_X37Y2          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MTVEC_reg[10]/Q
-                         net (fo=2, routed)           0.108     0.249    my_otter/PC_MUX/mtvec[10]
-    SLICE_X36Y2          LUT6 (Prop_lut6_I0_O)        0.045     0.294 r  my_otter/PC_MUX/data_out[10]_i_1/O
-                         net (fo=1, routed)           0.000     0.294    my_otter/PC/D[10]
-    SLICE_X36Y2          FDCE                                         r  my_otter/PC/data_out_reg[10]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_otter/my_csr/CSR_MTVEC_reg[11]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            my_otter/PC/data_out_reg[11]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.294ns  (logic 0.186ns (63.272%)  route 0.108ns (36.728%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X37Y3          FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MTVEC_reg[11]/C
-    SLICE_X37Y3          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MTVEC_reg[11]/Q
-                         net (fo=2, routed)           0.108     0.249    my_otter/PC_MUX/mtvec[11]
-    SLICE_X36Y3          LUT6 (Prop_lut6_I0_O)        0.045     0.294 r  my_otter/PC_MUX/data_out[11]_i_1/O
-                         net (fo=1, routed)           0.000     0.294    my_otter/PC/D[11]
-    SLICE_X36Y3          FDCE                                         r  my_otter/PC/data_out_reg[11]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_otter/my_csr/CSR_MEPC_reg[14]/C
+  Source:                 my_otter/my_csr/CSR_MTVEC_reg[14]/C
                             (rising edge-triggered cell FDRE)
   Destination:            my_otter/PC/data_out_reg[14]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.294ns  (logic 0.186ns (63.272%)  route 0.108ns (36.728%))
+  Data Path Delay:        0.284ns  (logic 0.186ns (65.445%)  route 0.098ns (34.555%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X37Y7          FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MEPC_reg[14]/C
-    SLICE_X37Y7          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MEPC_reg[14]/Q
-                         net (fo=2, routed)           0.108     0.249    my_otter/PC_MUX/Q[14]
-    SLICE_X36Y7          LUT6 (Prop_lut6_I2_O)        0.045     0.294 r  my_otter/PC_MUX/data_out[14]_i_1/O
-                         net (fo=1, routed)           0.000     0.294    my_otter/PC/D[14]
-    SLICE_X36Y7          FDCE                                         r  my_otter/PC/data_out_reg[14]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_otter/PC/data_out_reg[14]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            my_otter/my_csr/CSR_MEPC_reg[14]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.298ns  (logic 0.186ns (62.378%)  route 0.112ns (37.622%))
-  Logic Levels:           2  (FDCE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X36Y7          FDCE                         0.000     0.000 r  my_otter/PC/data_out_reg[14]/C
-    SLICE_X36Y7          FDCE (Prop_fdce_C_Q)         0.141     0.141 r  my_otter/PC/data_out_reg[14]/Q
-                         net (fo=25, routed)          0.112     0.253    my_otter/mcuFSM/Q[14]
-    SLICE_X37Y7          LUT6 (Prop_lut6_I4_O)        0.045     0.298 r  my_otter/mcuFSM/CSR_MEPC[14]_i_1/O
-                         net (fo=1, routed)           0.000     0.298    my_otter/my_csr/D[14]
-    SLICE_X37Y7          FDRE                                         r  my_otter/my_csr/CSR_MEPC_reg[14]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_otter/my_csr/CSR_MEPC_reg[18]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            my_otter/PC/data_out_reg[18]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.303ns  (logic 0.209ns (68.923%)  route 0.094ns (31.077%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X34Y7          FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MEPC_reg[18]/C
-    SLICE_X34Y7          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  my_otter/my_csr/CSR_MEPC_reg[18]/Q
-                         net (fo=2, routed)           0.094     0.258    my_otter/PC_MUX/Q[18]
-    SLICE_X35Y7          LUT6 (Prop_lut6_I2_O)        0.045     0.303 r  my_otter/PC_MUX/data_out[18]_i_1/O
-                         net (fo=1, routed)           0.000     0.303    my_otter/PC/D[18]
-    SLICE_X35Y7          FDCE                                         r  my_otter/PC/data_out_reg[18]/D
+    SLICE_X35Y11         FDRE                         0.000     0.000 r  my_otter/my_csr/CSR_MTVEC_reg[14]/C
+    SLICE_X35Y11         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_otter/my_csr/CSR_MTVEC_reg[14]/Q
+                         net (fo=2, routed)           0.098     0.239    my_otter/PC_MUX/mtvec[14]
+    SLICE_X34Y11         LUT6 (Prop_lut6_I0_O)        0.045     0.284 r  my_otter/PC_MUX/data_out[14]_i_1/O
+                         net (fo=1, routed)           0.000     0.284    my_otter/PC/D[14]
+    SLICE_X34Y11         FDCE                                         r  my_otter/PC/data_out_reg[14]/D
   -------------------------------------------------------------------    -------------------
 
 

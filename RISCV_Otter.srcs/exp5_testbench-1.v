@@ -50,7 +50,13 @@ OTTER_Wrapper  otter(
       #40
 
       btns[3] = 0;  
-
+      btns[4] = 1;
+      #400
+      btns[4] = 0;
+      #8000
+      btns[4] = 1;
+      #400
+      btns[4] = 0;
     end
         
  endmodule

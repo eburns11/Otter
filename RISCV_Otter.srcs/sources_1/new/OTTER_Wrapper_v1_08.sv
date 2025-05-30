@@ -56,9 +56,22 @@ module OTTER_Wrapper(
     logic [15:0] r_leds;   //  register for LEDs
     logic [3:0]  r_an;     //  register for display enables (anodes)
 
+    logic db4;
+    logic btn4_oneshot;
     
-    assign s_interrupt = buttons[4];  // for btn(4) connecting to interrupt
-    assign s_reset = buttons[3];      // for btn(3) connecting to reset
+    assign s_interrupt = btn4_oneshot;
+    assign s_reset = buttons[3];
+    
+    DBounce #(.n(5)) dbounce(
+    .clk    (s_clk),
+    .sig_in (buttons[4]),
+    .DB_out (db4)   );
+    
+    one_shot_bdir  #(.n(3)) my_oneshot (
+    .clk           (s_clk),
+    .sig_in        (db4),
+    .pos_pulse_out (btn4_oneshot),
+    .neg_pulse_out ()  );
 
     //- Instantiate RISC-V OTTER MCU 
     OTTER_MCU  my_otter(
@@ -99,7 +112,7 @@ module OTTER_Wrapper(
     //- assign registered outputs to actual outputs 
     assign leds = r_leds; 
     assign segs = r_segs; 
-    assign an = r_an; 
+    assign an = r_an;
     
 endmodule
 

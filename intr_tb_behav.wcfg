@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="11,379,405.229 ns"></ZoomStartTime>
-      <ZoomEndTime time="11,380,178.955 ns"></ZoomEndTime>
-      <Cursor1Time time="11,380,050.000 ns"></Cursor1Time>
+      <ZoomStartTime time="7,781.892 ns"></ZoomStartTime>
+      <ZoomEndTime time="8,899.327 ns"></ZoomEndTime>
+      <Cursor1Time time="8,319.982 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <NameColumnWidth column_width="146"></NameColumnWidth>
       <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
+   <WVObjectSize size="19" />
    <wvobject fp_name="/otter_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -27,6 +27,7 @@
    <wvobject fp_name="/otter_tb/btns" type="array">
       <obj_property name="ElementShortName">btns[4:0]</obj_property>
       <obj_property name="ObjectShortName">btns[4:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/otter_tb/otter/r_segs" type="array">
       <obj_property name="ElementShortName">r_segs[7:0]</obj_property>
@@ -63,5 +64,38 @@
    <wvobject fp_name="/otter_tb/otter/my_otter/mcuFSM/PS" type="array">
       <obj_property name="ElementShortName">PS[2:0]</obj_property>
       <obj_property name="ObjectShortName">PS[2:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/my_otter/my_csr/CSR_MSTATUS_MIE" type="logic">
+      <obj_property name="ElementShortName">CSR_MSTATUS_MIE</obj_property>
+      <obj_property name="ObjectShortName">CSR_MSTATUS_MIE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/my_otter/my_csr/CSR_MSTATUS" type="array">
+      <obj_property name="ElementShortName">CSR_MSTATUS[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CSR_MSTATUS[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/my_otter/intr" type="logic">
+      <obj_property name="ElementShortName">intr</obj_property>
+      <obj_property name="ObjectShortName">intr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/my_oneshot/pos_pulse_out" type="logic">
+      <obj_property name="ElementShortName">pos_pulse_out</obj_property>
+      <obj_property name="ObjectShortName">pos_pulse_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/dbounce/DB_out" type="logic">
+      <obj_property name="ElementShortName">DB_out</obj_property>
+      <obj_property name="ObjectShortName">DB_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/my_otter/intr_in" type="logic">
+      <obj_property name="ElementShortName">intr_in</obj_property>
+      <obj_property name="ObjectShortName">intr_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/dbounce/sig_in" type="logic">
+      <obj_property name="ElementShortName">sig_in</obj_property>
+      <obj_property name="ObjectShortName">sig_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/otter_tb/otter/my_oneshot/sig_in" type="logic">
+      <obj_property name="ElementShortName">sig_in</obj_property>
+      <obj_property name="ObjectShortName">sig_in</obj_property>
    </wvobject>
 </wave_config>
