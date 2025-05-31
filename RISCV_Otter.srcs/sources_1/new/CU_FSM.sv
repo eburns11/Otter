@@ -111,24 +111,28 @@ module CU_FSM(
               
             st_EX: begin //decode + execute
                 PC_WE = 1'b1;
-                NS = (intr) ? st_INTR : st_FET;
 				case (OPCODE)
 				    LUI: begin
                         RF_WE = 1'b1;
+                        NS = (intr) ? st_INTR : st_FET;
 					end
 					AUIPC: begin
 					   RF_WE = 1'b1;
+					   NS = (intr) ? st_INTR : st_FET;
 					end
 					
 					JAL: begin
 					    RF_WE = 1'b1;
+					    NS = (intr) ? st_INTR : st_FET;
 					end
 					
 					JALR: begin
 					   RF_WE = 1'b1;
+					   NS = (intr) ? st_INTR : st_FET;
 				    end
 				    
 				    BRANCH: begin
+				        NS = (intr) ? st_INTR : st_FET;
                     end
 				    
 				    LOAD: begin
@@ -139,17 +143,21 @@ module CU_FSM(
 					STORE: begin
                         RF_WE = 1'b0;
                         memWE2 = 1'b1;
+                        NS = (intr) ? st_INTR : st_FET;
                     end
 					  
 					OP_IMM: begin // addi
 					    RF_WE = 1'b1;
+					    NS = (intr) ? st_INTR : st_FET;
 					end
 					
 					OP_RG3: begin
 					   RF_WE = 1'b1;
+					   NS = (intr) ? st_INTR : st_FET;
 					 end
 					 
 					 SYS:  begin
+					   NS = (intr) ? st_INTR : st_FET;
 					   case (func3)
 					       3'b001: begin
 					           RF_WE = 1'b1;

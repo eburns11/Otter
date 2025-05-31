@@ -8,7 +8,7 @@
   **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
   **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
   **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-  **** Start of session at: Fri May 30 00:28:07 2025
+  **** Start of session at: Fri May 30 17:48:06 2025
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -25,9 +25,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 10604
+INFO: [Synth 8-7075] Helper process launched with PID 4468
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 994.742 ; gain = 468.949
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 995.355 ; gain = 469.184
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-11241] undeclared symbol 's_cnt_en', assumed default net type 'wire' [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/dbounce_v1_02.sv:65]
 INFO: [Synth 8-11241] undeclared symbol 'sig_change', assumed default net type 'wire' [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/one_shot_posneg_v1_03.sv:60]
@@ -44,7 +44,7 @@ INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Eric
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_Decoder.sv:71]
 INFO: [Synth 8-6155] done synthesizing module 'CU_Decoder' (0#1) [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_Decoder.sv:23]
 INFO: [Synth 8-6157] synthesizing module 'CU_FSM' [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:43]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:153]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:161]
 INFO: [Synth 8-6155] done synthesizing module 'CU_FSM' (0#1) [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:43]
 INFO: [Synth 8-6157] synthesizing module 'reg_nb' [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/reg_nb_v1_04.v:39]
 	Parameter n bound to: 32 - type: integer 
@@ -69,19 +69,20 @@ INFO: [Synth 8-6155] done synthesizing module 'CSR' (0#1) [C:/Users/Eric/CodePro
 INFO: [Synth 8-6155] done synthesizing module 'OTTER_MCU' (0#1) [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/OTTER_MCU.sv:23]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/OTTER_Wrapper_v1_08.sv:93]
 INFO: [Synth 8-6155] done synthesizing module 'OTTER_Wrapper' (0#1) [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/OTTER_Wrapper_v1_08.sv:27]
+WARNING: [Synth 8-87] always_comb on 'NS_reg' did not result in combinational logic [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:104]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1119.016 ; gain = 593.223
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1119.250 ; gain = 593.078
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1119.016 ; gain = 593.223
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1119.250 ; gain = 593.078
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1119.016 ; gain = 593.223
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1119.250 ; gain = 593.078
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1119.016 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1119.250 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -92,42 +93,45 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/OTTER_Wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1201.918 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1136.891 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1201.918 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1136.891 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1201.918 ; gain = 676.125
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.891 ; gain = 610.719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35ticpg236-1L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1201.918 ; gain = 676.125
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.891 ; gain = 610.719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1201.918 ; gain = 676.125
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.891 ; gain = 610.719
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'PS_reg' in module 'CU_FSM'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_NS_reg' [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:104]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_NS_reg' [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:104]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                 st_INIT |                              000 |                              000
-                  st_FET |                              001 |                              001
-                   st_EX |                              010 |                              010
-                   st_WB |                              011 |                              011
-                 st_INTR |                              100 |                              100
+                 st_INIT |                            00001 |                              000
+                  st_FET |                            00010 |                              001
+                   st_EX |                            00100 |                              010
+                   st_WB |                            01000 |                              011
+                 st_INTR |                            10000 |                              100
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'PS_reg' using encoding 'sequential' in module 'CU_FSM'
+INFO: [Synth 8-3354] encoded FSM with state register 'PS_reg' using encoding 'one-hot' in module 'CU_FSM'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_NS_reg' [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/CU_FSM.sv:104]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1201.918 ; gain = 676.125
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1136.891 ; gain = 610.719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -156,17 +160,20 @@ Detailed RTL Component Info :
 	   2 Input   32 Bit        Muxes := 13    
 	   4 Input   32 Bit        Muxes := 2     
 	   3 Input   32 Bit        Muxes := 1     
+	   5 Input    5 Bit        Muxes := 1     
+	  11 Input    5 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 10    
 	   2 Input    4 Bit        Muxes := 4     
 	   4 Input    4 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 14    
-	   4 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 10    
+	   4 Input    3 Bit        Muxes := 1     
+	   6 Input    3 Bit        Muxes := 1     
 	   5 Input    3 Bit        Muxes := 1     
-	  11 Input    3 Bit        Muxes := 1     
 	   2 Input    2 Bit        Muxes := 1     
 	   4 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 13    
+	   2 Input    1 Bit        Muxes := 15    
 	   4 Input    1 Bit        Muxes := 6     
-	   5 Input    1 Bit        Muxes := 9     
+	   5 Input    1 Bit        Muxes := 8     
 	   9 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -186,7 +193,7 @@ Start Cross Boundary and Area Optimization
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 WARNING: [Synth 8-3936] Found unconnected internal register 'my_oneshot/neg_pulse_reg_reg' and it is trimmed from '3' to '2' bits. [C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.srcs/sources_1/new/one_shot_posneg_v1_03.sv:72]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1225.516 ; gain = 699.723
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1220.691 ; gain = 694.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -216,13 +223,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1310.992 ; gain = 785.199
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1301.441 ; gain = 775.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1323.016 ; gain = 797.223
+Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1313.520 ; gain = 787.348
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -282,7 +289,7 @@ INFO: [Synth 8-7052] The timing for the instance my_otter/OTTER_MEMORY/memory_re
 INFO: [Synth 8-7052] The timing for the instance my_otter/OTTER_MEMORY/memory_reg_bram_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance my_otter/OTTER_MEMORY/memory_reg_bram_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1392.848 ; gain = 867.055
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1390.191 ; gain = 864.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -300,37 +307,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1536.047 ; gain = 1010.254
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1526.922 ; gain = 1000.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1536.047 ; gain = 1010.254
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1526.922 ; gain = 1000.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1536.047 ; gain = 1010.254
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1526.922 ; gain = 1000.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1536.047 ; gain = 1010.254
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1526.922 ; gain = 1000.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1538.047 ; gain = 1012.254
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1528.910 ; gain = 1002.738
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1538.047 ; gain = 1012.254
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1528.910 ; gain = 1002.738
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -349,46 +356,48 @@ Report Cell Usage:
 |1     |BUFG     |     2|
 |2     |CARRY4   |    67|
 |3     |LUT1     |     8|
-|4     |LUT2     |   195|
-|5     |LUT3     |    80|
-|6     |LUT4     |   257|
-|7     |LUT5     |   181|
-|8     |LUT6     |   910|
+|4     |LUT2     |   202|
+|5     |LUT3     |    81|
+|6     |LUT4     |   285|
+|7     |LUT5     |   229|
+|8     |LUT6     |   844|
 |9     |MUXF7    |   129|
 |10    |MUXF8    |    61|
 |11    |RAM32M   |    10|
 |12    |RAM32X1D |     4|
 |13    |RAMB36E1 |    16|
 |16    |FDCE     |    32|
-|17    |FDRE     |   197|
-|18    |FDSE     |     1|
-|19    |IBUF     |    22|
-|20    |OBUF     |    28|
+|17    |FDRE     |   198|
+|18    |FDSE     |     2|
+|19    |LD       |     5|
+|20    |IBUF     |    22|
+|21    |OBUF     |    28|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1538.047 ; gain = 1012.254
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1528.910 ; gain = 1002.738
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 1538.047 ; gain = 929.352
-Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1538.047 ; gain = 1012.254
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:42 . Memory (MB): peak = 1528.910 ; gain = 985.098
+Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1528.910 ; gain = 1002.738
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1544.902 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 287 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1538.113 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 292 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1546.660 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1541.766 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 14 instances were transformed.
+  A total of 19 instances were transformed.
+  LD => LDCE: 5 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
 
-Synth Design complete | Checksum: 8dfee4f4
+Synth Design complete | Checksum: 2f502caf
 INFO: [Common 17-83] Releasing license: Synthesis
-90 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+90 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1546.660 ; gain = 1211.164
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1546.660 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:52 . Memory (MB): peak = 1541.766 ; gain = 1206.086
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1541.766 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Eric/CodeProjects/CPE233/RISCV_Otter/RISCV_Otter.runs/synth_1/OTTER_Wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file OTTER_Wrapper_utilization_synth.rpt -pb OTTER_Wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri May 30 00:28:38 2025...
+INFO: [Common 17-206] Exiting Vivado at Fri May 30 17:49:04 2025...

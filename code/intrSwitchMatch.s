@@ -23,29 +23,26 @@ init:	la	s0,ISR			#get ISR address
 	
 	sw	a2,0(s3)		#set the first led
 	
-	li	s4,0x7			#display 1 on
-	li	s5,0xB			#display 2 on
-	li	s6,0xF			#all displays off
+	li	s5,0x7			#display 1 on
+	li	s6,0xB			#display 2 on
+	li	s7,0xF			#all displays off
 	
 	li	t0,0x8			#mie unmask bit
 	csrrs	zero,mstatus,t0		#enable interrupts
 		
-main:	sw	s6,0(s1)		#turn off all displays
+main:	sw	s7,0(s1)		#turn off all displays
 ones:	add	a3,s0,a0		#get LUT address for 1s
 	lbu	a3,0(a3)		#get LUT value
 	sw	a3,0(s2)		#set 1s seg
-	sw	s4,0(s1)		#turn on 1s seg
+	sw	s5,0(s1)		#turn on 1s seg
 	call	delay
 	
-	csrrs	t0,mstatus,zero
-	sw	t0,0(s3)
-	
-	sw	s6,0(s1)		#turn off all displays
+	sw	s7,0(s1)		#turn off all displays
 	beq	a1,x0,blank		#blank leading zero
 tens:	add	a3,s0,a1		#get LUT address for 10s
 	lbu	a3,0(a3)		#get LUT value
 	sw	a3,0(s2)		#set 10s seg
-	sw	s5,0(s1)		#turn on 10s seg
+	sw	s6,0(s1)		#turn on 10s seg
 blank:	call	delay
 
 	j	main			#endless loop
@@ -74,6 +71,6 @@ led:	slli	a2,a2,0x1		#shift the led position
 	li	t0,0x10000		#led overflow value
 	bltu	a2,t0,idone		#if not overflowing, done
 	li	a2,0x1			#else, reset to first spot
-	sw	a2,0(s3)		#set
 
-idone:	mret
+idone:	sw	a2,0(s3)		#set led
+	mret
